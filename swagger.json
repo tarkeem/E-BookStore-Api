@@ -1,0 +1,162 @@
+{
+    "swagger": "2.0",
+    "info": {
+      "version": "1.0.0",
+      "title": "E-bookStore API",
+      "description": "E-bookStore API",
+      "license": {
+        "name": "MIT",
+        "url": "https://opensource.org/licenses/MIT"
+      }
+    },
+    "host": "localhost:3000",
+    "basePath": "/",
+    "tags": [
+      {
+        "name": "E-bookStore",
+        "description": "API"
+      }
+    ],
+    "schemes": [
+      "http"
+    ],
+    "consumes": [
+      "application/json"
+    ],
+    "produces": [
+      "application/json"
+    ],
+    "paths": {
+      "v1/book/upload": {
+        "post": {
+            "parameters": [
+                {
+                    "name": "body",
+                    "in": "body",
+                    "schema": {
+                      "type": "object",
+                      "properties": {
+                        "name": {
+                          "example": "any"
+                        },
+                        "description": {
+                            "example": "any"
+                          },
+                          "pic": {
+                            "example": "any"
+                          },
+                          "userid": {
+                            "example": "any"
+                          },
+                        "price": {
+                            "example": "any"
+                          },
+                          "quantity": {
+                            "example": "any"
+                          },
+                        "commentsid": {
+                          "example": "any"
+                        }
+                      }
+                    }
+                  }
+            
+                ],
+            "requestBody":{
+              "required": true,
+              "content":"application/json",
+              "schema":{"$ref": "#/definitions/cart"}
+            },
+            "description": "post book to the system",
+            "produces": [
+            "application/json"
+            ],
+            "responses": {
+            "200": {
+                "description": "product has been uploaded.",
+                "schema": {
+                
+                }
+            }
+            }
+        }
+        },
+    "v1/cart/get": {
+        "get": {
+            "description": "Returns all carts from the system",
+            "produces": [
+            "application/json"
+            ],
+            "responses": {
+            "200": {
+                "description": "A list of cart.",
+                "schema": {
+                "type": "array",
+                "items": {
+                    "$ref": "#/definitions/cart"
+                }
+                }
+            }
+            }
+        }
+        }
+    },
+    "definitions":{
+      "product":{
+        "required":[
+            "userid",
+            "name",
+            "desription",
+            "imageurl",
+            "commentsid","price","quantity"
+        ],
+        "properties":{
+            "userid":{
+                "type":"user"
+            },
+            "name":{
+                "type":"string"
+            },
+            "desription":{
+                "type":"string"
+            },
+            "price":{
+                "type":"integer"
+            },
+            "quantity":{
+              "type":"integer"
+          },
+            "imageurl":{
+                "type":"string"
+            }
+        }
+    } ,
+        "cart":{
+            "required":[
+                "user",
+                "products",
+                "address",
+                "total",
+                "date"
+            ],
+            "properties":{
+                "user":{
+                    "type":"user"
+                },
+                "products":{
+                    "type":"string"
+                },
+                "address":{
+                    "type":"string"
+                },
+                "total":{
+                    "type":"integer"
+                },
+                "date":{
+                    "type":"string"
+                }
+            }
+        }
+    }
+  }
+  
